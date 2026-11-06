@@ -139,6 +139,7 @@ export const projects: Project[] = [
     how: [
       'Team of 3 in the iOS course. I set up the app structure and tab navigation and wrote most of the views.',
       'SwiftUI with @Observable state, async/await against the OpenF1 REST API, and SwiftData to remember the last race you picked.',
+      'A race produces huge amounts of telemetry. To read the right sample in real time without lag, we look it up by timestamp with binary search instead of scanning the whole list.',
     ],
     tags: ['iOS', 'Swift', 'SwiftUI'],
     images: [
