@@ -3,6 +3,7 @@ export interface ExperienceItem {
   role: string
   period: string
   text: string
+  upcoming?: boolean
 }
 
 export const experience: ExperienceItem[] = [
@@ -11,6 +12,7 @@ export const experience: ExperienceItem[] = [
     role: 'Thesis project',
     period: 'Spring 2027',
     text: 'Thesis project that grew out of our SEPM robot demo.',
+    upcoming: true,
   },
   {
     place: 'Knowit',

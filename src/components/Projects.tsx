@@ -5,28 +5,42 @@ import { ProjectDetail } from './ProjectDetail'
 import { Section } from './Section'
 
 const ALL = 'All'
-const allTags = [ALL, ...new Set(projects.flatMap((p) => p.tags))]
+const categories: Record<string, string[]> = {
+  Apps: ['iOS', 'macOS', 'Android'],
+  IoT: ['IoT', 'Embedded', 'BLE', 'CAN', 'MQTT', 'Robotics', 'Smart home'],
+  AI: ['AI', 'RL'],
+  Web: ['Web', 'React', 'TypeScript'],
+  Games: ['Game'],
+}
+const filters = [ALL, ...Object.keys(categories)]
+
+const inCategory = (project: Project, category: string) =>
+  project.tags.some((tag) => categories[category].includes(tag))
 
 export function Projects() {
-  const [activeTag, setActiveTag] = useState(ALL)
+  const [activeCategory, setActiveCategory] = useState(ALL)
   const [selected, setSelected] = useState<Project | null>(null)
+  const [showAll, setShowAll] = useState(false)
   const close = useCallback(() => setSelected(null), [])
 
-  const visible = activeTag === ALL ? projects : projects.filter((p) => p.tags.includes(activeTag))
+  const filtered = activeCategory === ALL ? projects : projects.filter((p) => inCategory(p, activeCategory))
+  const canCollapse = activeCategory === ALL
+  const visible = canCollapse && !showAll ? filtered.filter((p) => p.featured) : filtered
+  const hiddenCount = filtered.length - filtered.filter((p) => p.featured).length
 
   return (
     <Section id="projects" title="Projects">
       <p className="section-lead">Everyday problems I solved, and how I built the fix.</p>
-      <div className="filter" role="group" aria-label="Filter projects by tag">
-        {allTags.map((tag) => (
+      <div className="filter" role="group" aria-label="Filter projects by category">
+        {filters.map((category) => (
           <button
-            key={tag}
+            key={category}
             type="button"
             className="filter-button"
-            aria-pressed={tag === activeTag}
-            onClick={() => setActiveTag(tag)}
+            aria-pressed={category === activeCategory}
+            onClick={() => setActiveCategory(category)}
           >
-            {tag}
+            {category}
           </button>
         ))}
       </div>
@@ -37,6 +51,11 @@ export function Projects() {
           </li>
         ))}
       </ul>
+      {canCollapse && hiddenCount > 0 && (
+        <button type="button" className="show-more" aria-expanded={showAll} onClick={() => setShowAll(!showAll)}>
+          {showAll ? 'Show fewer projects' : `Show ${hiddenCount} more project${hiddenCount === 1 ? '' : 's'}`}
+        </button>
+      )}
       {selected && <ProjectDetail project={selected} onClose={close} />}
     </Section>
   )
