@@ -1,3 +1,4 @@
+import rocketbike from '../assets/projects/rocketbike.webp'
 import sepmMap from '../assets/projects/sepm-map.webp'
 import sepmStatus from '../assets/projects/sepm-status.webp'
 
@@ -20,6 +21,7 @@ export interface Project {
   tags: string[]
   images: ProjectImage[]
   links: ProjectLink[]
+  privateLabel?: string
 }
 
 export const PRIVATE_LABEL = 'Private / school project'
@@ -46,5 +48,23 @@ export const projects: Project[] = [
       { src: sepmStatus, alt: 'The app’s status screen, connected to the robot over BLE' },
     ],
     links: [],
+  },
+  {
+    id: 'rocketbike',
+    title: 'RocketBike: live app for an electric motorbike',
+    problem:
+      'An electric pocket bike at Knowit was fitted with electronics that read its data from the CAN bus and sent it to the cloud. That data was only useful if the rider could actually see it.',
+    solution:
+      'An iOS app that shows the bike live: locked or unlocked, speed, battery, GPS position on a map and graphs of recent rides.',
+    how: [
+      'My internship at Knowit, in a team of 7: UI/UX, app developers, one cloud developer and two embedded developers.',
+      'I built the iOS app. The cloud developer built the AWS backend the app connects to.',
+      'Data goes from the CAN bus to the cloud to the app, so we learned how a vehicle talks internally by reading real CAN frames.',
+      'Worked properly in Git as a team, with branches, PRs and reviews.',
+    ],
+    tags: ['iOS', 'Swift', 'IoT', 'CAN', 'AWS'],
+    images: [{ src: rocketbike, alt: 'The RocketBike electric pocket bike with its electronics exposed' }],
+    links: [],
+    privateLabel: 'Private / Knowit internship',
   },
 ]
