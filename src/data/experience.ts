@@ -18,7 +18,7 @@ export const experience: ExperienceItem[] = [
     place: 'Knowit',
     role: 'RocketBike project',
     period: 'Mar 2026 – Jul 2026',
-    text: 'Built the RocketBike iOS app with an AWS backend.',
+    text: 'Internship in a team of 7. I built the iOS app that shows an electric motorbike live: speed, battery, GPS and ride history.',
   },
   {
     place: 'JTH',
