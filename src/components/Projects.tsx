@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { projects, type Project } from '../data/projects'
+import { useMediaQuery } from '../hooks/useMediaQuery'
 import { ProjectCard } from './ProjectCard'
 import { ProjectDetail } from './ProjectDetail'
 import { Section } from './Section'
@@ -13,6 +14,7 @@ const categories: Record<string, string[]> = {
   Games: ['Game'],
 }
 const filters = [ALL, ...Object.keys(categories)]
+const MOBILE_FEATURED = 3
 
 const inCategory = (project: Project, category: string) =>
   project.tags.some((tag) => categories[category].includes(tag))
@@ -22,11 +24,13 @@ export function Projects() {
   const [selected, setSelected] = useState<Project | null>(null)
   const [showAll, setShowAll] = useState(false)
   const close = useCallback(() => setSelected(null), [])
+  const isMobile = useMediaQuery('(max-width: 719px)')
 
   const filtered = activeCategory === ALL ? projects : projects.filter((p) => inCategory(p, activeCategory))
   const canCollapse = activeCategory === ALL
-  const visible = canCollapse && !showAll ? filtered.filter((p) => p.featured) : filtered
-  const hiddenCount = filtered.length - filtered.filter((p) => p.featured).length
+  const featured = filtered.filter((p) => p.featured).slice(0, isMobile ? MOBILE_FEATURED : undefined)
+  const visible = canCollapse && !showAll ? featured : filtered
+  const hiddenCount = filtered.length - featured.length
 
   return (
     <Section id="projects" title="Projects">
