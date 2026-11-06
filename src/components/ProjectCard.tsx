@@ -1,3 +1,4 @@
+import type { PointerEvent } from 'react'
 import type { Project } from '../data/projects'
 import { TagList } from './TagList'
 
@@ -9,8 +10,12 @@ interface ProjectCardProps {
 export function ProjectCard({ project, onOpen }: ProjectCardProps) {
   const cover = project.images[0]
   return (
-    <article className="card project-card">
-      {cover && <img className="project-cover" src={cover.src} alt="" loading="lazy" />}
+    <article className="card project-card" onPointerMove={trackPointer}>
+      {cover && (
+        <div className="project-cover">
+          <img src={cover.src} alt="" loading="lazy" />
+        </div>
+      )}
       <h3>
         <button type="button" className="project-open" onClick={() => onOpen(project)}>
           {project.title}
@@ -20,4 +25,10 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
       <TagList tags={project.tags} label={`${project.title} tags`} />
     </article>
   )
+}
+
+function trackPointer(e: PointerEvent<HTMLElement>) {
+  const rect = e.currentTarget.getBoundingClientRect()
+  e.currentTarget.style.setProperty('--x', `${e.clientX - rect.left}px`)
+  e.currentTarget.style.setProperty('--y', `${e.clientY - rect.top}px`)
 }
