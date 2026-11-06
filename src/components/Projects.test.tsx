@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { Project } from '../data/projects'
 import { Projects } from './Projects'
 
@@ -16,6 +16,8 @@ vi.mock('../data/projects', () => {
       tags: ['IoT'],
       links: [{ label: 'GitHub', url: 'https://github.com/example' }],
     },
+    { ...base, id: 'web', title: 'Web project', problem: 'Problem D', tags: ['Web'] },
+    { ...base, id: 'game', title: 'Game project', problem: 'Problem E', tags: ['Game'] },
     { ...base, id: 'extra', title: 'Extra project', problem: 'Problem C', tags: ['iOS'], featured: false },
   ]
   return { projects, PRIVATE_LABEL: 'Private / school project' }
@@ -24,6 +26,8 @@ vi.mock('../data/projects', () => {
 const openCard = (title: string) => userEvent.click(screen.getByRole('button', { name: title }))
 
 describe('Projects', () => {
+  afterEach(() => vi.unstubAllGlobals())
+
   it('opens the detail view and closes it with the close button', async () => {
     render(<Projects />)
     await openCard('App project')
@@ -77,5 +81,16 @@ describe('Projects', () => {
     await userEvent.click(within(filter).getByRole('button', { name: 'Apps' }))
     expect(screen.getByRole('button', { name: 'Extra project' })).toBeInTheDocument()
     expect(screen.queryByRole('button', { name: /more project/ })).not.toBeInTheDocument()
+  })
+
+  it('shows fewer featured projects on mobile', () => {
+    vi.stubGlobal('matchMedia', (query: string) => ({
+      matches: query === '(max-width: 719px)',
+      addEventListener: () => {},
+      removeEventListener: () => {},
+    }))
+    render(<Projects />)
+    expect(screen.queryByRole('button', { name: 'Game project' })).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Show 2 more projects' })).toBeInTheDocument()
   })
 })
