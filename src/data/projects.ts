@@ -1,3 +1,6 @@
+import agbBatch from '../assets/projects/agb-batch.webp'
+import agbDevice from '../assets/projects/agb-device.webp'
+import agbOverview from '../assets/projects/agb-overview.webp'
 import carspotterCollection from '../assets/projects/carspotter-collection.webp'
 import carspotterFeed from '../assets/projects/carspotter-feed.webp'
 import carspotterHome from '../assets/projects/carspotter-home.webp'
@@ -89,5 +92,28 @@ export const projects: Project[] = [
       { src: carspotterFeed, alt: 'Feed with cars other users have spotted' },
     ],
     links: [{ label: 'GitHub', url: 'https://github.com/Zapeman02/carSpotter-Android' }],
+  },
+  {
+    id: 'agb',
+    title: 'AGB: automatic grain drying for a real farm',
+    problem:
+      'After harvest, grain must be dried to a safe moisture level in the bin or it spoils. On my friend’s farm the moisture was measured only twice, when the grain went in and when it was sold. Everything in between, including when to run the drying fan, was guesswork.',
+    solution:
+      'Sensors in the bin measure temperature, humidity and air pressure and send them over MQTT to the cloud. The system estimates the grain’s moisture and weight and recommends when the fan should run. A web dashboard shows every bin, its drying batches and history, and lets you control the fan from anywhere.',
+    how: [
+      'Built by me and a friend over a whole summer, and used on the farm’s real harvest.',
+      'Raspberry Pi Pico and ESP32-C3 microcontrollers, an MQTT bridge in Node.js/TypeScript, Supabase (Postgres, auth and realtime) and a React dashboard on Vercel.',
+      'Commands go both ways: the dashboard writes the desired fan state and the bridge pushes it to the hardware.',
+      'Row-level security, so every user only sees their own bins.',
+      'I wrote most of the code (286 of 324 commits).',
+    ],
+    tags: ['IoT', 'Hardware', 'MQTT', 'Supabase', 'React', 'TypeScript'],
+    images: [
+      { src: agbDevice, alt: 'Device view with fan status, moisture estimate, current batch and batch history' },
+      { src: agbOverview, alt: 'Overview of all grain bins with grain type, weight and fan status' },
+      { src: agbBatch, alt: 'A finished drying batch with grain loadings and end moisture' },
+    ],
+    links: [],
+    privateLabel: 'Private / farm project',
   },
 ]
