@@ -5,6 +5,6 @@ import App from './App'
 describe('App', () => {
   it('renders', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/ideas/i)
   })
 })
