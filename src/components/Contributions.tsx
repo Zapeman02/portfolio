@@ -24,7 +24,7 @@ export function Contributions({ data = calendar }: { data?: ContributionCalendar
     <figure className="contrib">
       <figcaption>
         <span className="contrib-label">GitHub activity</span>
-        <span className="contrib-total">{data.total} public contributions in the last year</span>
+        <span className="contrib-total">{data.total} contributions in the last year</span>
       </figcaption>
       <div className="contrib-grid" role="img" aria-label={`GitHub activity for the last ${weeks.length} weeks`}>
         {weeks.map((week) => (

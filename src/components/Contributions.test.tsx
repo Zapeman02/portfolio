@@ -10,7 +10,7 @@ describe('Contributions', () => {
     const data = { total: 9, weeks: [week(1, [0, 1, 2, 0, 0, 3, 0]), week(8, [3])] }
     const { container } = render(<Contributions data={data} />)
     expect(container.querySelectorAll('.contrib-day')).toHaveLength(8)
-    expect(screen.getByText('9 public contributions in the last year')).toBeInTheDocument()
+    expect(screen.getByText('9 contributions in the last year')).toBeInTheDocument()
   })
 
   it('scales levels to the busiest day', () => {
