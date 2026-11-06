@@ -102,8 +102,14 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1.1rem;
+  gap: 2.5rem;
   padding: 4rem 0 3rem;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
 }
 
 .hero-name {
@@ -650,6 +656,12 @@ a {
 }
 
 @media (min-width: 1024px) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .steps {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -659,15 +671,23 @@ a {
   }
 }
 
+@media (min-width: 1280px) {
+  .hero .contrib {
+    margin-right: -5rem;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .hero > * {
+  .hero-text > *,
+  .contrib {
     animation: rise 0.7s ease-out both;
   }
 
-  .hero > :nth-child(2) { animation-delay: 0.08s; }
-  .hero > :nth-child(3) { animation-delay: 0.16s; }
-  .hero > :nth-child(4) { animation-delay: 0.24s; }
-  .hero > :nth-child(5) { animation-delay: 0.32s; }
+  .hero-text > :nth-child(2) { animation-delay: 0.08s; }
+  .hero-text > :nth-child(3) { animation-delay: 0.16s; }
+  .hero-text > :nth-child(4) { animation-delay: 0.24s; }
+  .hero-text > :nth-child(5) { animation-delay: 0.32s; }
+  .contrib { animation-delay: 0.4s; }
 
   .hero-headline {
     background-image: linear-gradient(100deg, var(--purple), #d9467a, var(--orange), #d9467a, var(--purple));
@@ -720,6 +740,66 @@ a {
       animation-name: pop;
     }
   }
+}
+
+.contrib {
+  width: fit-content;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgb(20 17 28 / 0.7);
+  backdrop-filter: blur(6px);
+}
+
+.contrib figcaption {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.contrib-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.contrib-total {
+  color: var(--muted);
+}
+
+.contrib-grid {
+  display: flex;
+  gap: 3px;
+}
+
+.contrib-week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contrib-day {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  background: var(--border);
+}
+
+.contrib-day.level-1 {
+  background: #3b2470;
+}
+
+.contrib-day.level-2 {
+  background: var(--purple);
+}
+
+.contrib-day.level-3 {
+  background: #d9467a;
+}
+
+.contrib-day.level-4 {
+  background: var(--orange);
 }
 
 @keyframes rise {
