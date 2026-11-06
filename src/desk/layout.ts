@@ -1,0 +1,10 @@
+export const ROOM = 4.4
+export const WALL = 0.22
+export const WALL_H = 3.1
+export const DESK_Y = 0.78
+export const DESK_A = { length: 3.4, depth: 0.8 }
+export const DESK_B = { length: 1.9, depth: 0.8 }
+export const SHELF_LEVELS = [1.44, 1.9, 2.36]
+export const SHELF_DEPTH = 0.32
+export const WINDOW_Z = 1.75
+export const SIDEBOARD = { z0: 2.85, length: 1.45, depth: 0.42, height: 2.14, levels: [0.47, 0.98, 1.54, 2.14] }

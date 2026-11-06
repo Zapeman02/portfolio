@@ -22,26 +22,34 @@ export function NetworkBackground() {
     const mouse = { x: -1000, y: -1000 }
     let particles: Particle[] = []
     let frame = 0
+    let width = 0
+    let height = 0
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      canvas.width = innerWidth * dpr
-      canvas.height = innerHeight * dpr
+      const widthChanged = innerWidth !== width
+      const nextHeight = widthChanged ? innerHeight : Math.max(height, innerHeight)
+      if (!widthChanged && nextHeight === height) return
+      width = innerWidth
+      height = nextHeight
+      const dpr = Math.min(window.devicePixelRatio || 1, width < 720 ? 1.5 : 2)
+      canvas.width = width * dpr
+      canvas.height = height * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      const count = Math.min(80, Math.round((innerWidth * innerHeight) / 18000))
+      if (!widthChanged && particles.length) return
+      const count = Math.min(width < 720 ? 40 : 80, Math.round((width * height) / 18000))
       particles = Array.from({ length: count }, () => ({
-        x: Math.random() * innerWidth,
-        y: Math.random() * innerHeight,
+        x: Math.random() * width,
+        y: Math.random() * height,
         vx: (Math.random() - 0.5) * 0.3,
         vy: (Math.random() - 0.5) * 0.3,
       }))
     }
 
     const draw = () => {
-      ctx.clearRect(0, 0, innerWidth, innerHeight)
+      ctx.clearRect(0, 0, width, height)
       for (const p of particles) {
-        p.x = (p.x + p.vx + innerWidth) % innerWidth
-        p.y = (p.y + p.vy + innerHeight) % innerHeight
+        p.x = (p.x + p.vx + width) % width
+        p.y = (p.y + p.vy + height) % height
       }
       for (let i = 0; i < particles.length; i++) {
         const a = particles[i]
