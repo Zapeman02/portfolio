@@ -67,7 +67,7 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
 
         <div className="detail-links">
           {project.links.length === 0 ? (
-            <span className="tag">{PRIVATE_LABEL}</span>
+            <span className="tag">{project.privateLabel ?? PRIVATE_LABEL}</span>
           ) : (
             project.links.map((link) => (
               <a key={link.url} href={link.url} target="_blank" rel="noreferrer">
