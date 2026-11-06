@@ -1,3 +1,6 @@
+import racedayDrivers from '../assets/projects/raceday-drivers.webp'
+import racedayMap from '../assets/projects/raceday-map.webp'
+import racedayRace from '../assets/projects/raceday-race.webp'
 import agbBatch from '../assets/projects/agb-batch.webp'
 import agbDevice from '../assets/projects/agb-device.webp'
 import agbOverview from '../assets/projects/agb-overview.webp'
@@ -119,5 +122,24 @@ export const projects: Project[] = [
     ],
     links: [],
     privateLabel: 'Private / farm project',
+  },
+  {
+    id: 'raceday',
+    title: 'RaceDay: a live F1 dashboard for your phone',
+    problem:
+      'When you watch a Formula 1 race on TV you only see what the broadcast shows. We wanted a second screen with a live map of every car and the numbers behind the race, to follow along while watching.',
+    solution:
+      'An iOS app built on the OpenF1 API. It shows every car moving on a map of the track, the standings and intervals, and a dashboard for your favorite drivers. Past races can be replayed too.',
+    how: [
+      'Team of 3 in the iOS course. I set up the app structure and tab navigation and wrote most of the views.',
+      'SwiftUI with @Observable state, async/await against the OpenF1 REST API, and SwiftData to remember the last race you picked.',
+    ],
+    tags: ['iOS', 'Swift', 'SwiftUI'],
+    images: [
+      { src: racedayMap, alt: 'Live track map with every car as a colored dot' },
+      { src: racedayDrivers, alt: 'Driver list with team and favorite stars' },
+      { src: racedayRace, alt: 'Race picker with track, year and start and reset buttons' },
+    ],
+    links: [],
   },
 ]
