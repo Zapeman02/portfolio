@@ -8,6 +8,7 @@ import bletrackerMedium from '../assets/projects/bletracker-medium.webp'
 import carspotterCollection from '../assets/projects/carspotter-collection.webp'
 import carspotterFeed from '../assets/projects/carspotter-feed.webp'
 import carspotterHome from '../assets/projects/carspotter-home.webp'
+import racedayDashboard from '../assets/projects/raceday-dashboard.webp'
 import racedayDrivers from '../assets/projects/raceday-drivers.webp'
 import racedayMap from '../assets/projects/raceday-map.webp'
 import racedayRace from '../assets/projects/raceday-race.webp'
@@ -141,6 +142,7 @@ export const projects: Project[] = [
     ],
     tags: ['iOS', 'Swift', 'SwiftUI'],
     images: [
+      { src: racedayDashboard, alt: 'Live dashboard with speed, gear, DRS and rev lights for favorite drivers' },
       { src: racedayMap, alt: 'Live track map with every car as a colored dot' },
       { src: racedayDrivers, alt: 'Driver list with team and favorite stars' },
       { src: racedayRace, alt: 'Race picker with track, year and start and reset buttons' },
