@@ -14,6 +14,9 @@ import racedayDashboard from '../assets/projects/raceday-dashboard.webp'
 import racedayDrivers from '../assets/projects/raceday-drivers.webp'
 import racedayMap from '../assets/projects/raceday-map.webp'
 import racedayRace from '../assets/projects/raceday-race.webp'
+import racerlearningGarage from '../assets/projects/racerlearning-garage.webp'
+import racerlearningRace from '../assets/projects/racerlearning-race.webp'
+import racerlearningTrain from '../assets/projects/racerlearning-train.webp'
 import rocketbike from '../assets/projects/rocketbike.webp'
 import sepmAutonomous from '../assets/projects/sepm-autonomous.webp'
 import sepmControl from '../assets/projects/sepm-control.webp'
@@ -213,6 +216,30 @@ export const projects: Project[] = [
     links: [
       { label: 'GitHub', url: 'https://github.com/Zapeman02/EventHorizon' },
       { label: 'Download', url: 'https://github.com/Zapeman02/EventHorizon/releases/latest' },
+    ],
+  },
+  {
+    id: 'racerlearning',
+    title: 'Racerlearning: train your own AI racer',
+    problem:
+      'One evening I wanted to play a game where you don’t drive yourself, but train an AI racer by deciding what it gets rewarded for. It didn’t exist anywhere except in my head.',
+    solution:
+      'A neon Tokyo street racing game in the browser. Drag reward sliders for progress, speed, crashes and drifting, watch 40 cars evolve through neuroevolution, then race your model against the built-in base model KAMI-01 on generated tracks.',
+    how: [
+      'Each car sees the road through 7 distance rays plus its speed, slide and the next bend. A tiny neural network (11 → 16 → 2) turns that into steering and throttle.',
+      'Written from scratch in TypeScript with Canvas 2D and Vite. No game engine and no ML library.',
+      'Racers can be shared with a code that holds the whole model, so no server is needed.',
+      'CI runs typecheck, unit tests and Playwright UI tests in Chromium and WebKit, and every merge to main deploys automatically to itch.io.',
+    ],
+    tags: ['Game', 'AI', 'TypeScript', 'CI'],
+    images: [
+      { src: racerlearningGarage, alt: 'Garage screen with the base model KAMI-01 and a neon city track' },
+      { src: racerlearningTrain, alt: 'Training view with reward sliders and 40 cars evolving' },
+      { src: racerlearningRace, alt: 'A race on a generated track through a neon city' },
+    ],
+    links: [
+      { label: 'Play on itch.io', url: 'https://zapeman02.itch.io/racerlearning' },
+      { label: 'GitHub', url: 'https://github.com/Zapeman02/Racerlearning' },
     ],
   },
 ]
