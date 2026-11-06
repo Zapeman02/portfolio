@@ -7,6 +7,5 @@ export const profile = {
   links: {
     github: 'https://github.com/Zapeman02',
     linkedin: 'https://www.linkedin.com/in/kasper-b%C3%A4ck-4858b42a9/',
-    email: 'mailto:zapeman02@gmail.com',
   },
 }

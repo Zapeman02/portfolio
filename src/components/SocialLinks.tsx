@@ -1,8 +1,8 @@
 import { profile } from '../data/profile'
-import { GitHubIcon, LinkedInIcon, MailIcon } from './Icons'
+import { GitHubIcon, LinkedInIcon } from './Icons'
 
 export function SocialLinks() {
-  const { github, linkedin, email } = profile.links
+  const { github, linkedin } = profile.links
   return (
     <ul className="social">
       <li>
@@ -13,11 +13,6 @@ export function SocialLinks() {
       <li>
         <a href={linkedin} target="_blank" rel="noreferrer">
           <LinkedInIcon /> LinkedIn
-        </a>
-      </li>
-      <li>
-        <a href={email}>
-          <MailIcon /> Email
         </a>
       </li>
     </ul>
