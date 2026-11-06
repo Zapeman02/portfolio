@@ -11,10 +11,10 @@ export default function App() {
       <div className="glow" aria-hidden="true" />
       <main className="container">
         <Hero />
-        <HowIWork />
         <Projects />
         <Experience />
         <Interests />
+        <HowIWork />
       </main>
       <Footer />
     </>
