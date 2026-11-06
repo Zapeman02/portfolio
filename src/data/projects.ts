@@ -1,18 +1,22 @@
-import racedayDrivers from '../assets/projects/raceday-drivers.webp'
-import racedayMap from '../assets/projects/raceday-map.webp'
-import racedayRace from '../assets/projects/raceday-race.webp'
-import smarthome from '../assets/projects/smarthome.webp'
 import agbBatch from '../assets/projects/agb-batch.webp'
 import agbDevice from '../assets/projects/agb-device.webp'
 import agbOverview from '../assets/projects/agb-overview.webp'
+import bletrackerClose from '../assets/projects/bletracker-close.webp'
+import bletrackerFar from '../assets/projects/bletracker-far.webp'
+import bletrackerList from '../assets/projects/bletracker-list.webp'
+import bletrackerMedium from '../assets/projects/bletracker-medium.webp'
 import carspotterCollection from '../assets/projects/carspotter-collection.webp'
 import carspotterFeed from '../assets/projects/carspotter-feed.webp'
 import carspotterHome from '../assets/projects/carspotter-home.webp'
+import racedayDrivers from '../assets/projects/raceday-drivers.webp'
+import racedayMap from '../assets/projects/raceday-map.webp'
+import racedayRace from '../assets/projects/raceday-race.webp'
 import rocketbike from '../assets/projects/rocketbike.webp'
 import sepmAutonomous from '../assets/projects/sepm-autonomous.webp'
 import sepmControl from '../assets/projects/sepm-control.webp'
 import sepmLogs from '../assets/projects/sepm-logs.webp'
 import sepmStatus from '../assets/projects/sepm-status.webp'
+import smarthome from '../assets/projects/smarthome.webp'
 
 export interface ProjectImage {
   src: string
@@ -159,5 +163,27 @@ export const projects: Project[] = [
     tags: ['IoT', 'Smart home', 'Python', 'Home Assistant'],
     images: [{ src: smarthome, alt: 'Home Assistant logo' }],
     links: [{ label: 'Python scripts on GitHub', url: 'https://github.com/Zapeman02/home_assistant_python_scripts' }],
+  },
+  {
+    id: 'bletracker',
+    title: 'BLETracker: find a Bluetooth device by signal',
+    problem:
+      'You lost your headphones or watch somewhere at home. The phone can see them over Bluetooth, but it can’t tell you where they are.',
+    solution:
+      'An iOS app that lists nearby Bluetooth devices. Pick one and a radar shows how close you are as you walk around: red when far, yellow when closer, green when you’re there.',
+    how: [
+      'Built mostly for fun, to experiment with BLE before the SEPM project.',
+      'CoreBluetooth scans for devices and reads their signal strength (RSSI).',
+      'The raw signal jumps around, so a moving average over the last readings smooths it before it’s mapped to a 0–1 distance.',
+      'SwiftUI with @Observable state. Unnamed devices can be hidden.',
+    ],
+    tags: ['iOS', 'Swift', 'BLE'],
+    images: [
+      { src: bletrackerClose, alt: 'Radar in green: you are next to the device' },
+      { src: bletrackerList, alt: 'List of nearby Bluetooth devices with signal strength' },
+      { src: bletrackerFar, alt: 'Radar in red: the device is far away' },
+      { src: bletrackerMedium, alt: 'Radar in yellow: getting closer' },
+    ],
+    links: [{ label: 'GitHub', url: 'https://github.com/Zapeman02/BLETracker' }],
   },
 ]
