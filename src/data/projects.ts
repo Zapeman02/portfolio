@@ -1,3 +1,6 @@
+import carspotterCollection from '../assets/projects/carspotter-collection.webp'
+import carspotterFeed from '../assets/projects/carspotter-feed.webp'
+import carspotterHome from '../assets/projects/carspotter-home.webp'
 import rocketbike from '../assets/projects/rocketbike.webp'
 import sepmMap from '../assets/projects/sepm-map.webp'
 import sepmStatus from '../assets/projects/sepm-status.webp'
@@ -66,5 +69,25 @@ export const projects: Project[] = [
     images: [{ src: rocketbike, alt: 'The RocketBike electric pocket bike with its electronics exposed' }],
     links: [],
     privateLabel: 'Private / Knowit internship',
+  },
+  {
+    id: 'carspotter',
+    title: 'CarSpotter: collect cars like trading cards',
+    problem:
+      'Looking up a car you spot on the street is slow and boring: you have to type the plate into a website by hand.',
+    solution:
+      'An Android app where you snap a photo of a car. Text recognition (OCR) reads the plate, and the app shows model, year, horsepower and a rarity level. Every car goes into your collection, with a feed, followers and a leaderboard.',
+    how: [
+      'Team of 3 in the Android course. I did the UI, the data types, the loading states and parts of the ViewModel.',
+      'Kotlin with Jetpack Compose and MVVM: a ViewModel feeds the screens from a Room database and a car API.',
+      'Also reads QR codes and supports multiple languages and runtime permissions.',
+    ],
+    tags: ['Android', 'Kotlin', 'Compose', 'OCR'],
+    images: [
+      { src: carspotterCollection, alt: 'Collection screen with spotted cars as cards in different rarity levels' },
+      { src: carspotterHome, alt: 'Home screen with profile, top spot, recent spots and leaderboard' },
+      { src: carspotterFeed, alt: 'Feed with cars other users have spotted' },
+    ],
+    links: [{ label: 'GitHub', url: 'https://github.com/Zapeman02/carSpotter-Android' }],
   },
 ]
