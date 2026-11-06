@@ -8,6 +8,8 @@ import bletrackerMedium from '../assets/projects/bletracker-medium.webp'
 import carspotterCollection from '../assets/projects/carspotter-collection.webp'
 import carspotterFeed from '../assets/projects/carspotter-feed.webp'
 import carspotterHome from '../assets/projects/carspotter-home.webp'
+import eventhorizonGlow from '../assets/projects/eventhorizon-glow.webp'
+import eventhorizonShelf from '../assets/projects/eventhorizon-shelf.webp'
 import racedayDashboard from '../assets/projects/raceday-dashboard.webp'
 import racedayDrivers from '../assets/projects/raceday-drivers.webp'
 import racedayMap from '../assets/projects/raceday-map.webp'
@@ -188,5 +190,29 @@ export const projects: Project[] = [
       { src: bletrackerMedium, alt: 'Radar in yellow: getting closer' },
     ],
     links: [{ label: 'GitHub', url: 'https://github.com/Zapeman02/BLETracker' }],
+  },
+  {
+    id: 'eventhorizon',
+    title: 'EventHorizon: a file shelf in the MacBook notch',
+    problem:
+      'When you move files between apps you often need somewhere to park them for a moment. The desktop fills up, and the notch on a MacBook is just dead space.',
+    solution:
+      'A tiny macOS app that turns the notch into a shelf. Drag a file to the notch, watch it fall into a glowing black hole and drag it back out whenever you need it. Files dropped together stay together.',
+    how: [
+      'Native Swift and SwiftUI, with no Dock or menu bar icon. It starts at login and stays out of the way.',
+      'The notch starts glowing when you pick up a file and burns brighter the closer you get.',
+      'Only references are stored, so nothing is copied and the shelf stays tiny.',
+      'Released on GitHub with a ready-to-run download, and people outside my circle have downloaded it.',
+      'Builds with one script using only Apple’s Command Line Tools, no full Xcode needed.',
+    ],
+    tags: ['macOS', 'Swift', 'SwiftUI'],
+    images: [
+      { src: eventhorizonGlow, alt: 'A file being dragged into the glowing black hole in the MacBook notch' },
+      { src: eventhorizonShelf, alt: 'The open notch shelf with a single file and a stack of five files' },
+    ],
+    links: [
+      { label: 'GitHub', url: 'https://github.com/Zapeman02/EventHorizon' },
+      { label: 'Download', url: 'https://github.com/Zapeman02/EventHorizon/releases/latest' },
+    ],
   },
 ]
