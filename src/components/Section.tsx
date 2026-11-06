@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useInView } from '../hooks/useInView'
 
 interface SectionProps {
   id: string
@@ -7,8 +8,14 @@ interface SectionProps {
 }
 
 export function Section({ id, title, children }: SectionProps) {
+  const { ref, inView } = useInView<HTMLElement>()
   return (
-    <section id={id} className="section" aria-labelledby={`${id}-title`}>
+    <section
+      ref={ref}
+      id={id}
+      className={`section reveal${inView ? ' is-visible' : ''}`}
+      aria-labelledby={`${id}-title`}
+    >
       <h2 id={`${id}-title`} className="section-title">
         {title}
       </h2>

@@ -8,6 +8,9 @@
   --purple: #8b5cf6;
   --purple-soft: #c4b5fd;
   --orange: #ff7a1a;
+  --ember: rgb(255 84 10);
+  --flare: rgb(255 158 41);
+  --core: rgb(255 230 179);
   --fire: linear-gradient(100deg, var(--purple) 0%, #d9467a 55%, var(--orange) 100%);
   --radius: 14px;
   --font-display: 'Space Grotesk', system-ui, sans-serif;
@@ -67,6 +70,22 @@ a {
   filter: blur(40px);
   pointer-events: none;
   z-index: -1;
+}
+
+.network {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glow-2 {
+  inset: auto auto -25vh -25vw;
+  width: 60vw;
+  height: 60vh;
+  background: radial-gradient(closest-side, rgb(255 122 26 / 0.12), rgb(139 92 246 / 0.06) 60%, transparent);
 }
 
 .container,
@@ -173,7 +192,7 @@ a {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
-  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.3s;
 }
 
 .card:hover {
@@ -332,17 +351,57 @@ a {
   align-content: start;
 }
 
+/* Border glow that follows the pointer, in EventHorizon's ember colors */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: radial-gradient(260px circle at var(--x, 50%) var(--y, -200px), var(--core), var(--flare) 15%, var(--ember) 35%, transparent 75%);
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  box-shadow: 0 0 32px rgb(255 84 10 / 0.22), 0 0 4px rgb(255 158 41 / 0.3);
+}
+
 .project-card:focus-within {
   border-color: var(--orange);
 }
 
+.project-card:hover {
+  background:
+    radial-gradient(320px circle at var(--x, 50%) var(--y, -200px), rgb(255 122 26 / 0.18), transparent 70%),
+    var(--surface-hover);
+}
+
 .project-cover {
-  width: 100%;
   aspect-ratio: 16 / 10;
-  object-fit: cover;
-  object-position: center 40%;
+  overflow: hidden;
   border-radius: calc(var(--radius) - 4px);
   background: var(--bg);
+}
+
+.project-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-cover img {
+  transform: scale(1.05);
 }
 
 .project-card h3 {
@@ -530,12 +589,96 @@ a {
   .hero > :nth-child(3) { animation-delay: 0.16s; }
   .hero > :nth-child(4) { animation-delay: 0.24s; }
   .hero > :nth-child(5) { animation-delay: 0.32s; }
+
+  .hero-headline {
+    background-image: linear-gradient(100deg, var(--purple), #d9467a, var(--orange), #d9467a, var(--purple));
+    background-size: 200% auto;
+    animation: rise 0.7s ease-out 0.08s both, shimmer 10s linear infinite;
+  }
+
+  .glow {
+    animation: drift 20s ease-in-out infinite alternate;
+  }
+
+  .glow-2 {
+    animation-duration: 26s;
+    animation-direction: alternate-reverse;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .is-visible .project-grid > li,
+  .is-visible .steps > li,
+  .is-visible .timeline > li {
+    animation: rise 0.6s ease-out both;
+  }
+
+  .is-visible :is(.project-grid, .steps, .timeline) > li:nth-child(2) { animation-delay: 0.08s; }
+  .is-visible :is(.project-grid, .steps, .timeline) > li:nth-child(3) { animation-delay: 0.16s; }
+  .is-visible :is(.project-grid, .steps, .timeline) > li:nth-child(4) { animation-delay: 0.24s; }
+  .is-visible :is(.project-grid, .steps, .timeline) > li:nth-child(5) { animation-delay: 0.32s; }
+  .is-visible :is(.project-grid, .steps, .timeline) > li:nth-child(n + 6) { animation-delay: 0.4s; }
+
+  .detail-backdrop {
+    animation: fade 0.2s ease-out;
+  }
+
+  .detail {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  @media (min-width: 720px) {
+    .detail {
+      animation-name: pop;
+    }
+  }
 }
 
 @keyframes rise {
   from {
     opacity: 0;
     transform: translateY(12px);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes drift {
+  to {
+    transform: translate(-12vw, 10vh) scale(1.15);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
   }
 }
 
