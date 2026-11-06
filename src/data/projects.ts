@@ -1,6 +1,7 @@
 import racedayDrivers from '../assets/projects/raceday-drivers.webp'
 import racedayMap from '../assets/projects/raceday-map.webp'
 import racedayRace from '../assets/projects/raceday-race.webp'
+import smarthome from '../assets/projects/smarthome.webp'
 import agbBatch from '../assets/projects/agb-batch.webp'
 import agbDevice from '../assets/projects/agb-device.webp'
 import agbOverview from '../assets/projects/agb-overview.webp'
@@ -141,5 +142,22 @@ export const projects: Project[] = [
       { src: racedayRace, alt: 'Race picker with track, year and start and reset buttons' },
     ],
     links: [],
+  },
+  {
+    id: 'smart-home',
+    title: 'A smart home that sets the right light by itself',
+    problem:
+      'I wanted the right lighting on at home at all times, without clicking through a bunch of light switches and apps.',
+    solution:
+      'Home Assistant on a Raspberry Pi that runs the home by itself: lights follow the time of day, wake-up lighting brightens slowly in the morning and the TV backlight syncs with the screen. Just for fun, the lights also blink when someone gifts subs on Twitch.',
+    how: [
+      'The whole config lives in Git: protected main, every change through a PR, and a small add-on I wrote pulls main onto the Pi and reloads Home Assistant without a restart.',
+      'Custom Python scripts for the lighting (circadian rhythm, color wave, ambient sync), shared in a public repo with ready-made automations.',
+      'An add-on of my own that listens to Twitch events.',
+      'Secrets and keys stay on the Pi, never in Git.',
+    ],
+    tags: ['IoT', 'Smart home', 'Python', 'Home Assistant'],
+    images: [{ src: smarthome, alt: 'Home Assistant logo' }],
+    links: [{ label: 'Python scripts on GitHub', url: 'https://github.com/Zapeman02/home_assistant_python_scripts' }],
   },
 ]
