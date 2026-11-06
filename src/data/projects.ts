@@ -5,7 +5,9 @@ import carspotterCollection from '../assets/projects/carspotter-collection.webp'
 import carspotterFeed from '../assets/projects/carspotter-feed.webp'
 import carspotterHome from '../assets/projects/carspotter-home.webp'
 import rocketbike from '../assets/projects/rocketbike.webp'
-import sepmMap from '../assets/projects/sepm-map.webp'
+import sepmAutonomous from '../assets/projects/sepm-autonomous.webp'
+import sepmControl from '../assets/projects/sepm-control.webp'
+import sepmLogs from '../assets/projects/sepm-logs.webp'
 import sepmStatus from '../assets/projects/sepm-status.webp'
 
 export interface ProjectImage {
@@ -46,12 +48,14 @@ export const projects: Project[] = [
       '670+ commits and 150+ merged PRs, each with CI for its part and a human approving every merge.',
       'Tests on three levels: unit, integration and acceptance tests on the real robot, recorded as gifs. A traceability matrix links every requirement to its code and test.',
       'AI agents used on purpose, with written rules and roles: architect, engineer, QA, security and reviewer.',
-      'Picked to present the project at a high school. I gave the final demo to all classes and Husqvarna, which led to my thesis project with them.',
+      'When high school students visited, our team was picked to present the project to them. I gave the final demo to all classes and Husqvarna, which led to my thesis project with them.',
     ],
     tags: ['iOS', 'Swift', 'BLE', 'Robotics', 'RL', 'Scrum', 'CI'],
     images: [
-      { src: sepmMap, alt: 'The app’s live map with walls, the robot’s path and collision dots' },
-      { src: sepmStatus, alt: 'The app’s status screen, connected to the robot over BLE' },
+      { src: sepmAutonomous, alt: 'Live map in autonomous mode with walls, the robot’s path and collision dots' },
+      { src: sepmControl, alt: 'Control screen with speed and steer sticks for manual driving' },
+      { src: sepmStatus, alt: 'Status screen, connected to the robot over BLE' },
+      { src: sepmLogs, alt: 'In-app log of connection, control and session events' },
     ],
     links: [],
   },
