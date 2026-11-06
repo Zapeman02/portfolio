@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Kasper Bäck',
-  headline: 'I turn ideas into things that work in real life.',
-  tagline: 'Agentic AI makes me fast, CI/CD and automated tests keep it solid.',
+  headline: "I can't stop building things.",
+  tagline: "I build iOS apps and IoT devices, and I'm getting into embedded. Agentic AI speeds up the work, CI/CD and automated tests keep it reliable.",
   intro:
     'Computer Engineering student (Software Development & Mobile Platforms) at JTH. I like building things you can hold, drive or tap.',
   links: {
