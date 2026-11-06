@@ -6,8 +6,11 @@ export function Experience() {
     <Section id="experience" title="Experience">
       <ol className="timeline">
         {experience.map((item) => (
-          <li key={`${item.role}-${item.place}`} className="timeline-item">
-            <p className="timeline-period">{item.period}</p>
+          <li key={`${item.role}-${item.place}`} className={`timeline-item${item.upcoming ? ' is-upcoming' : ''}`}>
+            <p className="timeline-period">
+              {item.period}
+              {item.upcoming && <span className="upcoming-badge">Upcoming</span>}
+            </p>
             <h3>
               {item.role} <span className="timeline-place">· {item.place}</span>
             </h3>

@@ -1,4 +1,4 @@
-export const interests = ['iOS', 'IoT', 'Embedded', 'Hardware', 'Smart home', 'Robotics']
+export const interests = ['iOS', 'IoT', 'Embedded', 'Smart home', 'Robotics']
 
 export const builtWith = [
   'Swift / SwiftUI',

@@ -1,5 +1,6 @@
 import type { PointerEvent } from 'react'
 import type { Project } from '../data/projects'
+import { ContextBadge } from './ContextBadge'
 import { TagList } from './TagList'
 
 interface ProjectCardProps {
@@ -23,6 +24,10 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
       </h3>
       <p className="project-problem">{project.problem}</p>
       <TagList tags={project.tags} label={`${project.title} tags`} />
+      <div className="card-badges">
+        {project.inProgress && <span className="context-badge is-progress">In progress</span>}
+        <ContextBadge context={project.context} />
+      </div>
     </article>
   )
 }

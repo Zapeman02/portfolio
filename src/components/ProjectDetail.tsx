@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { PRIVATE_LABEL, type Project } from '../data/projects'
+import { ContextBadge } from './ContextBadge'
 import { TagList } from './TagList'
 
 interface ProjectDetailProps {
@@ -41,6 +42,10 @@ export function ProjectDetail({ project, onClose }: ProjectDetailProps) {
         <button ref={closeRef} type="button" className="detail-close" onClick={onClose} aria-label="Close">
           ×
         </button>
+        <div className="card-badges">
+          <ContextBadge context={project.context} />
+          {project.inProgress && <span className="context-badge is-progress">In progress</span>}
+        </div>
         <h2 id={titleId} className="detail-title">
           {project.title}
         </h2>

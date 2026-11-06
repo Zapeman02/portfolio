@@ -13,6 +13,7 @@ describe('projects data', () => {
     expect(project.solution.trim()).not.toBe('')
     expect(project.how.length).toBeGreaterThan(0)
     expect(project.tags.length).toBeGreaterThan(0)
+    expect(['Real use', 'Internship', 'School', 'Personal']).toContain(project.context)
   })
 
   it.each(projects)('$id has https links with labels', (project) => {
