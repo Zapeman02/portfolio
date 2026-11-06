@@ -1,6 +1,7 @@
 import racedayDrivers from '../assets/projects/raceday-drivers.webp'
 import racedayMap from '../assets/projects/raceday-map.webp'
 import racedayRace from '../assets/projects/raceday-race.webp'
+import smarthome from '../assets/projects/smarthome.webp'
 import agbBatch from '../assets/projects/agb-batch.webp'
 import agbDevice from '../assets/projects/agb-device.webp'
 import agbOverview from '../assets/projects/agb-overview.webp'
@@ -156,7 +157,7 @@ export const projects: Project[] = [
       'Secrets and keys stay on the Pi, never in Git.',
     ],
     tags: ['IoT', 'Smart home', 'Python', 'Home Assistant'],
-    images: [],
+    images: [{ src: smarthome, alt: 'Home Assistant logo' }],
     links: [{ label: 'Python scripts on GitHub', url: 'https://github.com/Zapeman02/home_assistant_python_scripts' }],
   },
 ]
